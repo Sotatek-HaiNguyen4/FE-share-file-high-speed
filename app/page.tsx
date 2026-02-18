@@ -66,9 +66,11 @@ export default function Home() {
 
   // ================= PEER =================
   const createPeer = () => {
-    const peer = new RTCPeerConnection({
-      iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
-    });
+    // const peer = new RTCPeerConnection({
+    //   iceServers: [{ urls: "stun:stun.l.google.com:19302" }],
+    // });
+
+    const peer = new RTCPeerConnection();
 
     peer.onconnectionstatechange = () => {
       setConnectionState(peer.connectionState);
