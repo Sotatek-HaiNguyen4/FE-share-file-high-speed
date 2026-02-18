@@ -42,7 +42,7 @@ export default function Home() {
       socketRef.current.emit("offer", { roomId, offer });
     });
 
-    socketRef.current.on("offer", async (offer) => {
+    socketRef.current.on("offer", async (offer: any) => {
       await peerRef.current?.setRemoteDescription(
         new RTCSessionDescription(offer),
       );
@@ -51,13 +51,13 @@ export default function Home() {
       socketRef.current.emit("answer", { roomId, answer });
     });
 
-    socketRef.current.on("answer", async (answer) => {
+    socketRef.current.on("answer", async (answer: any) => {
       await peerRef.current?.setRemoteDescription(
         new RTCSessionDescription(answer),
       );
     });
 
-    socketRef.current.on("ice-candidate", async (candidate) => {
+    socketRef.current.on("ice-candidate", async (candidate: any) => {
       await peerRef.current?.addIceCandidate(new RTCIceCandidate(candidate));
     });
 
